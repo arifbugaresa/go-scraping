@@ -1,93 +1,95 @@
-# dans_golang
+# API Documentation
+
+This document provides details on the RESTful APIs available in the application.
+
+## Getting Started
+
+### Base URL
+The base URL for all API endpoints is http://localhost:8080.
+
+### Authentication
+
+You can try this api for login
+- `POST /login`
+
+### Credentials
+| Username | Password |
+|----------|----------|
+| user     | password |
+
+JWT authentication is required for the following routes:
+- `GET /jobs`
+- `GET /jobs/{id}`
 
 
+## Endpoints
+### Login
 
-## Getting started
+- **URL**: `POST localhost:8080/login`
+- **Description**: This API is used to get tokens with registered username and password authentication.
+- **Response**:
+  ```json
+  {
+    "message": "Login successful",
+    "data": {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c"
+    }
+  }
+  ```
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+### Get All Job
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- **URL**: `POST localhost:8080/jobs`
+- **Description**: This API is used to get data on all available jobs.
+- **Response**:
+  ```json
+  {
+    "message": "Success Get All Job",
+    "data": [
+        {
+            "id": "32bf67e5-4971-47ce-985c-44b6b3860cdb",
+            "type": "Full Time",
+            "url": "https://jobs.github.com/positions/32bf67e5-4971-47ce-985c-44b6b3860cdb",
+            "created_at": "Wed May 19 00:49:17 UTC 2021",
+            "company": "SweetRush",
+            "company_url": "https://www.sweetrush.com/",
+            "location": "Remote",
+            "title": "Senior Creative Front End Web Developer",
+            "description": "<p><strong>SweetRush has an exciting opportunity for an experienced creative front-end developer (full stack is also acceptable) with an eye for graphic and UX design!</strong></p>\n<p><strong>ABOUT THE ROLE:</strong></p>\n<p>This is an important role on the Engineering and Development department’s Course Development team, and you will be reporting directly to the Course Development team lead.</p>\n<p>Historically, the developers most successful in this role contribute to multiple projects at the same time; show a willingness to improve existing techniques, frameworks, and templates; and come up with innovations of their own. You will succeed if you truly enjoy active collaboration with your colleagues and don’t mind stepping in when your help is required.</p>\n<p>This is a remote position and a great opportunity to work from home. Candidates from all geographic locations are welcome to apply; however, our development team is mostly based in North and Latin America, and you should be willing to work during our business hours.</p>\n<p><strong>REQUIRED SKILLS:</strong></p>\n<p><strong>Front end</strong></p>\n<ul>\n<li>7+ years as a front-end or full-stack developer in a creative environment</li>\n<li>Expert-level JavaScript skills—Vanilla JS expertise is as important as the knowledge of frameworks and libraries</li>\n<li>High level of competency in HTML5 and CSS3</li>\n<li>Familiarity with one or more frameworks, preferably <strong>React and Node.js</strong>\n</li>\n<li>While React is the most commonly used framework at the moment, your proven ability to quickly harness unfamiliar technology is more important than an intimate knowledge of any of the given frameworks.</li>\n<li><strong>Most importantly - you can look at just about any cool effect, interaction, animation, parallax, website on the web, and say - Even if I can’t do this now, I want to try!</strong></li>\n<li>Understanding of responsive design and mobile-first principles</li>\n</ul>\n<p><strong>Soft skills and generic productivity tools</strong></p>\n<ul>\n<li>Ability to clearly communicate in English</li>\n<li>English verbal communication skills are an absolute must because the position requires frequent interaction with peers and clients.</li>\n<li>Experience with version control systems such as Git or Subversion</li>\n<li>Experience working in a team development environment or demonstrating a capacity to do so</li>\n<li>Enjoy learning and experimenting, open to new ideas</li>\n</ul>\n<p><strong>YOU WILL IMPRESS EVERYONE IF YOU:</strong></p>\n<ul>\n<li>Have built a learning simulation</li>\n<li>Have experience with mobile app development and distribution</li>\n<li>Have experience with graphic and UX design</li>\n<li>Know anything about Adapt Framework</li>\n</ul>\n<p><strong>YOU MAY BE EXPECTED TO:</strong></p>\n<ul>\n<li>Complete a test assignment</li>\n<li>Be interviewed by a number of highly judgmental yet supremely talented future colleagues</li>\n</ul>\n<p><strong>THE ESSENCE OF THE JOB</strong></p>\n<p>OK, now that you’ve made it through all the obligatory language, you may be wondering what this position is really all about. Therefore, please read the rest of this job description carefully!</p>\n<p>It all boils down to your ability to make a simple claim: <strong>I can do it!</strong></p>\n<p>If we show you an interactive website with intricate animations, a complicated menu system, and multiple interdependencies, you should state: <strong>I can do it!</strong></p>\n<p>If we need to harness a complex web-based gaming engine and use it for the first time to build a learning simulation, you should confidently assert: <strong>I can do it!</strong></p>\n<p>If we need to produce a large volume of digital training materials in a record short period of time, you should answer: <strong>I can do it!</strong></p>\n<p>And if we need an adventurous engineer to lead the team in the creation of a system that is completely different from everything we have done before, we’re most definitely looking for the loud <strong>I can do it!</strong></p>\n<p>And even more importantly, you must <strong>want to do it</strong>.</p>\n<p>SweetRush is a team of winners. These are not empty words. Just check out our impressive industry trophy shelf, which includes this recent success: <a href=\"https://www.sweetrush.com/sweetrush-wins-16-awards-brandon-hall-awards-2020\">https://www.sweetrush.com/sweetrush-wins-16-awards-brandon-hall-awards-2020</a>.</p>\n<p>As a winner, you will always want the ball. Want to do better. Want to be more creative and efficient. Join us, and let's see if we can win even more by working together!</p>\n<p>This is a work-from-home opportunity! We are 100% virtual, and all communications occur over digital channels (Skype/Web Share/email), apart from infrequent on-site meetings. Occasional travel may be required.</p>\n<p><strong>Please note: We're all about remote work and have collaborators based all around the world; however, SweetRush is a US-based company, and English is our primary language. If you'd like to be considered for this opportunity, please submit your resume in English.</strong></p>\n"
+        },
+        {
+            "id": "7638eee4-4e75-4c06-a920-ea7619a311b5",
+            "type": "Full Time",
+            "url": "https://jobs.github.com/positions/7638eee4-4e75-4c06-a920-ea7619a311b5",
+            "created_at": "Tue May 18 17:12:52 UTC 2021",
+            "company": "MANDARIN MEDIEN Gesellschaft für digitale Lösungen mbH",
+            "company_url": "https://www.mandarin-medien.de/",
+            "location": "Schwerin",
+            "title": "Systemadministrator:in",
+            "description": "<p>2002 sind wir als Internetagentur gestartet. Heute bezeichnen wir uns als Digitalagentur. Das Spielfeld ist heute breiter und greift tiefer in bestehende Geschäftsbereiche ein. In unseren 3 Units MARKETING, DIGITAL &amp; TALENT arbeiten über 80 Macher, Nerds und Kreative nach einem Prinzip: Messbar mehr Erfolg. Das heißt konkret: Klare Ziele. Permanente Optimierung. Transparentes Reporting.</p>\n<p><strong>Wer wir sind</strong></p>\n<p>Wir sind Zuhörer, Strategen, Kreative, Experten, Kollegen, Freunde, Spaßmacher, keine Großeredenschwinger, Stille, Laute, Sprachgewandte, Texter, Erfolgshungrige, Macher.</p>\n<p><strong>WIR HELFEN MENSCHEN UND MARKEN ÜBER SICH HINAUSZUWACHSEN.\nWIR SIND MANDARIN MEDIEN!</strong></p>\n<p><strong>Das wären Deine Aufgaben</strong></p>\n<p>Wir bieten Dir einen freien Platz in unserem IT Team als Systemadministrator:in in unserer Digitalagentur in Schwerin. Mit deinem Team wirst du für unsere Kunden den digitalen Ausbau vorantreiben und die Chance bekommen unsere digitale Unit noch weiter auszubauen und größer werden zu lassen.\nChristian, Christoph, Fabrice, Gordon, Gérard, Marcel, Christoph, Moritz, Sebastian &amp; Steffen freuen sich, wenn DU ihr Team komplett machst.</p>\n<p><strong>Das wären Deine Aufgaben</strong></p>\n<ul>\n<li>Erster Ansprechpartner für deine Kunden, via Telefon, E-Mail, Remote oder auch direkt vor Ort</li>\n<li>Umgang mit verschiedenen Themen und Umgebungen\nz.B: Client-, Server-, Netzwerk- und im Cloudbereich</li>\n<li>Fehleranalyse und -beseitigung</li>\n<li>Installation, Administration und Wartung von Kundeninfrastruktur</li>\n<li>First- und Second-Level Support</li>\n<li>Projektbezogene Planung, Vorbereitung und Durchführung</li>\n</ul>\n<p><strong>Das bringst Du mit</strong></p>\n<ul>\n<li>Eine abgeschlossene Ausbildung als Fachinformatiker für Systemintegration</li>\n<li>Führerschein Klasse B</li>\n<li>Kunden- sowie Lösungsorientiertes handeln</li>\n<li>Verantwortungsbewusstsein für deine eigenständige Zeiteinteilung</li>\n<li>Bereitschaft jeden Tag dazu zu lernen und mit deinen Aufgaben zu wachsen</li>\n<li>Spaß an der Arbeit im Team und mit dem Team neue Ideen zu entwickeln</li>\n<li>Zertifizierungen im Bereich Microsoft, VMWare und Cisco wünschenswert</li>\n</ul>\n<p>Klingt ganz schön viel? Nobody is perfect! Wir lernen alle jeden Tag voneinander und nehmen uns jede Woche Zeit für Weiterbildung. Die ein oder andere Fähigkeit kannst Du also auch nach Deinem Start bei uns erlernen oder vertiefen.</p>\n<p><strong>Das bieten wir Dir</strong></p>\n<ul>\n<li>Einen spannenden und anspruchsvollen Agentur-Job in MV</li>\n<li>Eine große Bandbreite an Projekten - Handwerk bis Konzern</li>\n<li>Ein hervorragendes Arbeitsklima und kurze Entscheidungswege</li>\n<li>Zeit für Deine Weiterbildung,  je Woche, plus Budget</li>\n<li>Moderne Arbeitsmittel und neueste Programme</li>\n<li>Unterstützung Deiner Gesundheit</li>\n<li>Möglichkeit eines Fahrtkostenzuschusses</li>\n<li>Flexibles Arbeiten - von Zuhause oder einfach mal am Strand</li>\n<li>Kreative Denkpausen mit dem Boot auf dem Schweriner See</li>\n<li>Teamevents, wie z.B. Grillen, MANDARIN-Kino, Besuch des Weihnachtsmarktes uvm.</li>\n<li>Ein Büro mitten in der City sowie leckeres Obst, Kaffee, Tee, Wasser und Mate</li>\n</ul>\n<p><strong>Kontakt</strong></p>\n<p>​​​​​Passt alles für Dich?</p>\n<p>Dann sende Deine Bewerbung mit Deinen Vorstellungen zu Gehalt und Urlaub an Corinna Lepsien, <a href=\"mailto:jobs@mandarin-medien.de\">jobs@mandarin-medien.de</a>. Falls Du gerade unterwegs bist, kannst Du uns auch einfach einen Link von Deinem Xing- oder LinkedIn Profil schicken.</p>\n<p><img src=\"https://camo.githubusercontent.com/26c2737b75fe2e3161d0a357a200081f9e8d0243/68747470733a2f2f742e676f686972696e672e636f6d2f682f31306564346231663739316361656138313233643961343663393034333134353938646566643238663733363838366634363661363332383333376361376130\"></p>\n"
+        }
+      ]
+  }
+  ```
+  
+### Get Detail Job
 
-## Add your files
-
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
-
-```
-cd existing_repo
-git remote add origin https://gitlab.com/dansmp-ht-1/arifyuniarto88/dans_golang.git
-git branch -M main
-git push -uf origin main
-```
-
-## Integrate with your tools
-
-- [ ] [Set up project integrations](https://gitlab.com/dansmp-ht-1/arifyuniarto88/dans_golang/-/settings/integrations)
-
-## Collaborate with your team
-
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
-
-## Test and Deploy
-
-Use the built-in continuous integration in GitLab.
-
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
-
-***
-
-# Editing this README
-
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
-
-## Suggestions for a good README
-
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
-
-## Name
-Choose a self-explaining name for your project.
-
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
-
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
-
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
-
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
-
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
-
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
-
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
-
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
-
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
-
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
-
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
-
-## License
-For open source projects, say how it is licensed.
-
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+- **URL**: `POST localhost:8080/jobs/{{id}}`
+- **Description**: This API is used to get detail jobs.
+- **Response**:
+  ```json
+  {
+    "message": "Success Get Detail Job",
+    "data": {
+        "id": "32bf67e5-4971-47ce-985c-44b6b3860cdb",
+        "type": "Full Time",
+        "url": "https://jobs.github.com/positions/32bf67e5-4971-47ce-985c-44b6b3860cdb",
+        "created_at": "Wed May 19 00:49:17 UTC 2021",
+        "company": "SweetRush",
+        "company_url": "https://www.sweetrush.com/",
+        "location": "Remote",
+        "title": "Senior Creative Front End Web Developer",
+        "description": "<p><strong>SweetRush has an exciting opportunity for an experienced creative front-end developer (full stack is also acceptable) with an eye for graphic and UX design!</strong></p>\n<p><strong>ABOUT THE ROLE:</strong></p>\n<p>This is an important role on the Engineering and Development department’s Course Development team, and you will be reporting directly to the Course Development team lead.</p>\n<p>Historically, the developers most successful in this role contribute to multiple projects at the same time; show a willingness to improve existing techniques, frameworks, and templates; and come up with innovations of their own. You will succeed if you truly enjoy active collaboration with your colleagues and don’t mind stepping in when your help is required.</p>\n<p>This is a remote position and a great opportunity to work from home. Candidates from all geographic locations are welcome to apply; however, our development team is mostly based in North and Latin America, and you should be willing to work during our business hours.</p>\n<p><strong>REQUIRED SKILLS:</strong></p>\n<p><strong>Front end</strong></p>\n<ul>\n<li>7+ years as a front-end or full-stack developer in a creative environment</li>\n<li>Expert-level JavaScript skills—Vanilla JS expertise is as important as the knowledge of frameworks and libraries</li>\n<li>High level of competency in HTML5 and CSS3</li>\n<li>Familiarity with one or more frameworks, preferably <strong>React and Node.js</strong>\n</li>\n<li>While React is the most commonly used framework at the moment, your proven ability to quickly harness unfamiliar technology is more important than an intimate knowledge of any of the given frameworks.</li>\n<li><strong>Most importantly - you can look at just about any cool effect, interaction, animation, parallax, website on the web, and say - Even if I can’t do this now, I want to try!</strong></li>\n<li>Understanding of responsive design and mobile-first principles</li>\n</ul>\n<p><strong>Soft skills and generic productivity tools</strong></p>\n<ul>\n<li>Ability to clearly communicate in English</li>\n<li>English verbal communication skills are an absolute must because the position requires frequent interaction with peers and clients.</li>\n<li>Experience with version control systems such as Git or Subversion</li>\n<li>Experience working in a team development environment or demonstrating a capacity to do so</li>\n<li>Enjoy learning and experimenting, open to new ideas</li>\n</ul>\n<p><strong>YOU WILL IMPRESS EVERYONE IF YOU:</strong></p>\n<ul>\n<li>Have built a learning simulation</li>\n<li>Have experience with mobile app development and distribution</li>\n<li>Have experience with graphic and UX design</li>\n<li>Know anything about Adapt Framework</li>\n</ul>\n<p><strong>YOU MAY BE EXPECTED TO:</strong></p>\n<ul>\n<li>Complete a test assignment</li>\n<li>Be interviewed by a number of highly judgmental yet supremely talented future colleagues</li>\n</ul>\n<p><strong>THE ESSENCE OF THE JOB</strong></p>\n<p>OK, now that you’ve made it through all the obligatory language, you may be wondering what this position is really all about. Therefore, please read the rest of this job description carefully!</p>\n<p>It all boils down to your ability to make a simple claim: <strong>I can do it!</strong></p>\n<p>If we show you an interactive website with intricate animations, a complicated menu system, and multiple interdependencies, you should state: <strong>I can do it!</strong></p>\n<p>If we need to harness a complex web-based gaming engine and use it for the first time to build a learning simulation, you should confidently assert: <strong>I can do it!</strong></p>\n<p>If we need to produce a large volume of digital training materials in a record short period of time, you should answer: <strong>I can do it!</strong></p>\n<p>And if we need an adventurous engineer to lead the team in the creation of a system that is completely different from everything we have done before, we’re most definitely looking for the loud <strong>I can do it!</strong></p>\n<p>And even more importantly, you must <strong>want to do it</strong>.</p>\n<p>SweetRush is a team of winners. These are not empty words. Just check out our impressive industry trophy shelf, which includes this recent success: <a href=\"https://www.sweetrush.com/sweetrush-wins-16-awards-brandon-hall-awards-2020\">https://www.sweetrush.com/sweetrush-wins-16-awards-brandon-hall-awards-2020</a>.</p>\n<p>As a winner, you will always want the ball. Want to do better. Want to be more creative and efficient. Join us, and let's see if we can win even more by working together!</p>\n<p>This is a work-from-home opportunity! We are 100% virtual, and all communications occur over digital channels (Skype/Web Share/email), apart from infrequent on-site meetings. Occasional travel may be required.</p>\n<p><strong>Please note: We're all about remote work and have collaborators based all around the world; however, SweetRush is a US-based company, and English is our primary language. If you'd like to be considered for this opportunity, please submit your resume in English.</strong></p>\n"
+      }
+    }
+  ```
